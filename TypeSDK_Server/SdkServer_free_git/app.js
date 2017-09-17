@@ -8,7 +8,8 @@ var favicon = require('serve-favicon');
 var logger = require('morgan');
 var cookieParser = require('cookie-parser');
 var bodyParser = require('body-parser');
-
+var cloud = require('./cloud');
+var AV = require('leanengine');
 var sdk = require('./routes/sdkrouters');
 var pre = require('./routes/prelogic');
 
@@ -17,6 +18,10 @@ var app = express();
 // view engine setup
 app.set('views', path.join(__dirname, 'views'));
 app.set('view engine', 'jade');
+// 加载云代码方法
+app.use(AV.express());
+// 加载 cookieSession 以支持 AV.User 的会话状态
+app.use(AV.Cloud.CookieSession({ secret: '05XgTktLFMkU', maxAge: 3600000, fetchUser: true }));
 
 // uncomment after placing your favicon in /public
 //app.use(favicon(path.join(__dirname, 'public', 'favicon.ico')));

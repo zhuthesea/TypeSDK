@@ -1,12 +1,12 @@
 /**
  * Created by TypeSDK 2016/10/10.
  */
-var config = require('../config');
+// var config = require('../config');
 var redis = require("redis"),
-    client = redis.createClient(config.redisconfig.port, config.redisconfig.host);
+    client = redis.createClient(process.env['REDIS_URL_tracpcache1']);
 
 //Redis验证
-client.auth(config.redisconfig.pass);
+// client.auth(config.redisconfig.pass);
 
 // redis 链接错误
 var index = 0;
