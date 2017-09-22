@@ -2,8 +2,7 @@
  * Created by TypeSDK 2016/10/10.
  */
 
-// var log4js = require('log4js');
-/*
+var log4js = require('log4js');
 var path = require("path");
 log4js.configure({
 	appenders: [
@@ -49,25 +48,17 @@ log4js.configure({
 		log_date: "ALL"
 	}
 });
-*/
-
 //var logger = log4js.getLogger(name);
 //logger.setLevel('INFO');
-//
-// var loggerf = function (name) {
-// 	var logger = log4js.getLogger(name);
-// 	logger.setLevel('INFO');
-// 	//return log4js.connectLogger(logger(name),{level:'auto'});
-// 	return logger;
-// };
-exports.loggerf = function (name) {
-	return function (ww) {
-		console.log("loggerf",name,ww);
-	}
+
+var loggerf = function (name) {
+	var logger = log4js.getLogger(name);
+	logger.setLevel('INFO');
+	//return log4js.connectLogger(logger(name),{level:'auto'});
+	return logger;
 };
+exports.loggerf = loggerf;
 exports.logger = function (name) {
-	return function (ww) {
-		console.log("logger",name,ww);
-	}
+	return log4js.connectLogger(loggerf(name), {level: 'auto'})
 };
 

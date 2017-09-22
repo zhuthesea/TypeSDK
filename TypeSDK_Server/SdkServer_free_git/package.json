@@ -1,10 +1,9 @@
 {
-  "name": "tracp",
-  "version": "1.0.0",
+  "name": "SDKServer",
+  "version": "0.0.0",
   "private": true,
-  "main": "server.js",
   "scripts": {
-    "start": "node server.js"
+    "start": "node ./bin/www"
   },
   "dependencies": {
     "body-parser": "~1.13.2",
@@ -13,15 +12,6 @@
     "express": "~4.13.1",
     "jade": "~1.11.0",
     "morgan": "~1.6.1",
-    "leanengine": "^2.0.1",
-    "multiparty":"",
-    "merge":"",
-    "redis": "2.2.x",
-    "request":"",
-    "xmlreader":"",
     "serve-favicon": "~2.3.0"
-  },
-  "engines": {
-    "node": "6.x"
   }
 }
